@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        /* Стилове за галерията */
+        .gallery {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow: hidden;
+            background-color: #f2f2f2;
+          /*  position: relative; */
+        }
+
+        .gallery-item {
+            flex: 0 0 100%; 
+            text-align: center;
+            justify-content:stretch;
+            display: none;
+            border-radius: 3em;
+        }
+
+        .gallery-item img {
+  
+            width: 100%;
+            /*max-width:100%  only granted pichture will be in continer and not cross conteinr size*/
+            height: auto;
+            transition: transform 0.5s;
+        }
+
+        /* Стилове за бутоните */
+        .gallery-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+
+        }
+
+        .gallery-controls button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Gallery</h1>
+
+    <!-- Контейнер за галерията -->
+    <div class="gallery">
+        <!-- Изображенията с URL линкове -->
+        <div class="gallery-item">
+            <img src="https://expertphotography.b-cdn.net/wp-content/uploads/2022/04/Types-of-Photography-Intro-Andrik-Langfield.jpg" alt="Image 1">
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://i.ytimg.com/vi/ineZXLbL7s8/maxresdefault.jpg" alt="Image 2">
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2021/11/free-photography-courses-tutorials-featured.jpg" alt="Image 3">
+        </div>
+    </div>
+
+    <!-- Бутони за превключване на изображения -->
+    <div class="gallery-controls">
+        <button onclick="plusSlides(-1)">&#10094; Предишно изображение</button>
+        <button onclick="plusSlides(1)">&#10095; Следващо изображение</button>
+    </div>
+
+    <script>
+        // JavaScript код за управление на изображенията
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides(n) {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            if (n > galleryItems.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = galleryItems.length }
+
+            galleryItems.forEach(item => item.style.display = 'none');
+
+            galleryItems[slideIndex - 1].style.display = 'block';
+        }
+    </script>
+</body>
+</html>
