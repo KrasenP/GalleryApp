@@ -40,7 +40,7 @@ button.accept-policy {
   font-size: 1rem;
   line-height: inherit;
 }
-
+/*change default container from me*/
 .container {
     border: 2px solid #0077cc;
     display:flex;
@@ -50,6 +50,7 @@ button.accept-policy {
     
 
 }
+/*change default element in container from me */
 .pb-3 {
     
     border:2px solid yellow;
