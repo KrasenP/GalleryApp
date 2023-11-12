@@ -18,21 +18,21 @@
             text-align:center;
         }
 
-       
+
 
         .section-features {
             display: flex;
-            flex: 0 0 100%;            
+            flex: 0 0 100%;
             border: 2px solid black;
             margin-top: 1em;
             margin-bottom: 1em;
-            
-          
+
+
 
         }
 
         .fetures-conteiner{
-            display:flex;      
+            display:flex;
             justify-content:center;
             gap:1em;
             border:2px solid pink;
@@ -56,6 +56,12 @@
             .service-item:hover * {
                 color: var(--light) !important;
             }
+          
+            .container-galleryPic{
+                    display:flex;
+                    flex-wrap:wrap;
+                   justify-content: center;
+            }
 
             .destination img {
             transition: .5s;
@@ -64,7 +70,8 @@
             .destination a:hover img {
             transform: scale(1.1);
             }
-         
+
+
     </style>
 </head>
 
@@ -79,9 +86,9 @@
         </div>
     </div>
 
-    <div class="section-popular picture">
+    <div class="section-popular-picture">
         <div class="container-xxl py-5 destination">
-            <div class="container">
+            <div class="container-galleryPic">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                     <h6 class="section-title bg-white text-center text-primary px-3">Destination</h6>
                     <h1 class="mb-5">Popular Destination</h1>
@@ -92,22 +99,22 @@
                             <div class="col-lg-12 col-md-12 wow zoomIn" data-wow-delay="0.1s">
                                 <a class="position-relative d-block overflow-hidden" href="">
                                     <img class="img-fluid" src="img/destination-1.jpg" alt="">
-                                    <div class="bg-white text-danger fw-bold position-absolute top-0 start-0 m-3 py-1 px-2">30% OFF</div>
-                                    <div class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">Thailand</div>
+                                   @* <div class="bg-white text-danger fw-bold position-absolute top-0 start-0 m-3 py-1 px-2">30% OFF</div>*@
+                                    @* <div class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">Thailand</div>*@
                                 </a>
                             </div>
                             <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.3s">
                                 <a class="position-relative d-block overflow-hidden" href="">
                                     <img class="img-fluid" src="img/destination-2.jpg" alt="">
-                                    <div class="bg-white text-danger fw-bold position-absolute top-0 start-0 m-3 py-1 px-2">25% OFF</div>
-                                   @*<div class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">Malaysia</div>*@
+                                   @* <div class="bg-white text-danger fw-bold position-absolute top-0 start-0 m-3 py-1 px-2">25% OFF</div>*@
+                                    @*<div class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">Malaysia</div>*@
                                 </a>
                             </div>
                             <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.5s">
                                 <a class="position-relative d-block overflow-hidden" href="">
                                     <img class="img-fluid" src="img/destination-3.jpg" alt="">
-                                    <div class="bg-white text-danger fw-bold position-absolute top-0 start-0 m-3 py-1 px-2">35% OFF</div>
-                                    <div class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">Australia</div>
+                                   @* <div class="bg-white text-danger fw-bold position-absolute top-0 start-0 m-3 py-1 px-2">35% OFF</div>*@
+                                   @* <div class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">Australia</div>*@
                                 </a>
                             </div>
                         </div>
@@ -115,8 +122,8 @@
                     <div class="col-lg-5 col-md-6 wow zoomIn" data-wow-delay="0.7s" style="min-height: 350px;">
                         <a class="position-relative d-block h-100 overflow-hidden" href="">
                             <img class="img-fluid position-absolute w-100 h-100" src="img/destination-3.jpg" alt="" style="object-fit: cover;">
-                            <div class="bg-white text-danger fw-bold position-absolute top-0 start-0 m-3 py-1 px-2">20% OFF</div>
-                            <div class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">Indonesia</div>
+                           @* <div class="bg-white text-danger fw-bold position-absolute top-0 start-0 m-3 py-1 px-2">20% OFF</div>*@
+                            @*<div class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2">Indonesia</div>*@
                         </a>
                     </div>
                 </div>
@@ -137,19 +144,19 @@
 
             <div class="fetures-conteiner">
 
-                    <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="service-item rounded pt-3">
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item rounded pt-3">
 
-                            <div class="p-4">
-                                <i class="fa fa-3x fa-globe text-primary mb-4"></i>
-                                <h5>Galleries with picture from WorldWide Tours</h5>
-                                <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                            </div>
-
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-globe text-primary mb-4"></i>
+                            <h5>Galleries with picture from WorldWide Tours</h5>
+                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
                         </div>
-                    </div>
 
-                
+                    </div>
+                </div>
+
+
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="service-item rounded pt-3">
                         <div class="p-4">
@@ -175,9 +182,9 @@
         </div>
     </div>
 
-   
+
     </div>
-   
+
 
 </body>
 
