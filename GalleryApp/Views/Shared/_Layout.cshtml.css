@@ -41,6 +41,21 @@ button.accept-policy {
   line-height: inherit;
 }
 
+.container {
+    border: 2px solid #0077cc;
+    display:flex;
+    max-width:100%;
+    margin:auto;
+    justify-content:center;
+    
+
+}
+.pb-3 {
+    
+    border:2px solid yellow;
+    flex: 0 0 100%;
+    margin:auto;
+}
 .footer {
   position: absolute;
   bottom: 0;

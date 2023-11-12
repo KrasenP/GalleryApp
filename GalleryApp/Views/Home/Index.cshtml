@@ -6,18 +6,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        .conteiner{
+
+            text-align:center;
+        }
+
+       
+
         .section-features {
             display: flex;
+            flex: 0 0 100%;            
             border: 2px solid black;
-            width: 100%;
+            margin-top: 1.5em;
+            margin-bottom: 10em;
+          
+
         }
 
         .fetures-conteiner{
-            display:flex;
+            display:flex;      
             justify-content:center;
-            gap:0.5em;
+            gap:1em;
             border:2px solid pink;
+            flex-wrap:wrap;
         }
+
+        .service-item {
+            box-shadow: 0 0 45px rgba(0, 0, 0, .06);
+            transition: .5s;
+        }
+
+            .service-item:hover {
+               /* background: var(--primary);*/
+               background-color:aqua;
+            }
+
+            .service-item * {
+                transition: .5s;
+            }
+
+            .service-item:hover * {
+                color: var(--light) !important;
+            }
          
     </style>
 </head>
@@ -82,6 +119,17 @@
 
         </div>
     </div>
+
+    <div class="section-hero-banner">
+        <div class="conteiner">
+
+            <h2>Welcom to our site to shere your memories in picture</h2>
+
+            <p>Create gallery and uplod pictures.Add descriptopn to help people learn more about this memoris in picture </p>
+
+        </div>
+    </div>
+   
 
 </body>
 
