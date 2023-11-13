@@ -1,6 +1,8 @@
-﻿namespace GalleryApp.Data
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
+namespace GalleryApp.Data
 {
-    public class GalleryAppDbContext
+    public class GalleryAppDbContext : IdentityDbContext
     {
 
     }
