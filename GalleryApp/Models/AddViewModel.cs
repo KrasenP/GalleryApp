@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Amazon.Util.Internal;
+using System.ComponentModel.DataAnnotations;
 
 namespace GalleryApp.Models
 {
@@ -9,7 +10,6 @@ namespace GalleryApp.Models
 
         [Required]
         public string Description { get; set; }
-
         
     }
 }
