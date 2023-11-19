@@ -31,7 +31,7 @@ namespace GalleryApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(AddViewModel view,IFormFile fileData) 
         {
-            // create object for Gallery without Image!!! for SQL
+            // create object for Gallery without Image!!! (for SQL)
             Gallery gallery = new Gallery() 
             {
                    Title = view.Title,
@@ -44,7 +44,8 @@ namespace GalleryApp.Controllers
 
             var fileName = $"{Guid.NewGuid()}{Path.GetExtension(fileData.FileName)}";
             var extension = Path.GetExtension(fileData.FileName).TrimStart('.');
-            // create object for images
+
+            // create object for image (for SQL)
             GalleryImages galleryImages = new GalleryImages()
             {
                 FileName = fileName,
@@ -52,10 +53,12 @@ namespace GalleryApp.Controllers
                 GalleryId = gallery.Id
             };
 
+            // open strem to add file data in MongoDB 
             using (MemoryStream stream = new MemoryStream()) 
             {
                 await fileData.CopyToAsync(stream);
 
+               // create object(object from type (model for MongoDb)) for mongodb
                 GalleryImagesFiles galleryImagesFiles = new GalleryImagesFiles()
                 {
                     FileData = stream.ToArray(),
