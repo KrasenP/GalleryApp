@@ -361,3 +361,10 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+
+# MongoDb related files
+MongoDb.Data/WiredTiger.lock
+MongoDb.Data/WiredTiger.turtle 
+/GalleryApp.MogoData/WiredTiger.lock
+/GalleryApp.MogoData/WiredTiger.turtle

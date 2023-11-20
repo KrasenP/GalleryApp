@@ -1,6 +1,7 @@
 using GalleryApp.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using MongoDB.Driver;
 
 namespace GalleryApp
 {
@@ -20,6 +21,11 @@ namespace GalleryApp
                 .AddEntityFrameworkStores<GalleryAppDbContext>();
             builder.Services.AddControllersWithViews();
 
+            // Add MondoDb services 
+            var mongoClient = new MongoClient(builder.Configuration.GetConnectionString("MongoDbConnection"));
+            builder.Services.AddSingleton<IMongoDatabase>(mongoClient.GetDatabase("GalleryAppMDB"));
+            
+            
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
