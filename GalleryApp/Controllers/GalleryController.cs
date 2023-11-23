@@ -11,11 +11,12 @@ namespace GalleryApp.Controllers
     public class GalleryController : Controller
     {
         private GalleryAppDbContext _dbContext;
-        private IMongoCollection<GalleryImagesFiles> mongoCollection;
+        private IMongoCollection<GalleryImagesFiles> _mongoCollection;
        
-        public GalleryController(GalleryAppDbContext dbContext)
+        public GalleryController(GalleryAppDbContext dbContext,IMongoDatabase mongoDatabase)
         {
             _dbContext = dbContext;
+            _mongoCollection = mongoDatabase.GetCollection<GalleryImagesFiles>("GalleryApp");
         }
         public IActionResult All()
         {
@@ -67,7 +68,7 @@ namespace GalleryApp.Controllers
                     Extension = extension
                 };
              
-                await mongoCollection.InsertOneAsync(galleryImagesFiles);
+                await _mongoCollection.InsertOneAsync(galleryImagesFiles);
             }
 
             await _dbContext.GalleryImages.AddAsync(galleryImages);
