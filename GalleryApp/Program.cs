@@ -22,7 +22,7 @@ namespace GalleryApp
             builder.Services.AddControllersWithViews();
 
             // Add MondoDb services 
-            var mongoClient = new MongoClient(builder.Configuration.GetConnectionString("MongoDbConnection"));
+            var mongoClient = new MongoClient(builder.Configuration.GetConnectionString("MongoDb"));
             builder.Services.AddSingleton<IMongoDatabase>(mongoClient.GetDatabase("GalleryAppMDB"));
             
             

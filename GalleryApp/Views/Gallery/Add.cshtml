@@ -2,20 +2,18 @@
 
 <style>
 
-  
 
-    .row{
 
+    .row {
         border: 2px solid black;
-        margin-left:20em;
-        margin-right:20em;
-        align-items:center;
-        padding-top:5em;
-        padding-bottom:5em;
+        margin-left: 20em;
+        margin-right: 20em;
+        align-items: center;
+        padding-top: 5em;
+        padding-bottom: 5em;
     }
 
-    .form-container{
-        
+    .form-container {
     }
 
 </style>
@@ -41,18 +39,21 @@
                     <span asp-validation-for="Description" class="small text-danger"></span>
                 </div>
 
+                <div class="form-group">
+                    <label for="file">Upload Image</label>
+                    <input type="file" name="fileData" required class="form-control mb-3" />
+                </div>
 
-             
 
                 <div class="text-center">
-                    <input class="btn btn-primary mt-3 w-50" type="submit" value="Create Galler" />
+                    <input class="btn btn-primary mt-3 w-50" type="submit" value="Create Gallery" />
                 </div>
             </form>
-             
-            <h4>Upload image</h4>
+
+            <h4>Upload image (out of use)</h4>
 
             <form method="post" enctype="multipart/form-data" asp-action="Add" asp-controller="Gallery">
-              
+
                 <div class="form-group">
                     <input type="file" name="file" required class="form-control mb-3" />
                     <button type="submit" class="btn btn-primary btn-block">Upload</button>
