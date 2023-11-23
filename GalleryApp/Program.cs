@@ -24,6 +24,7 @@ namespace GalleryApp
 
             // Add MongoDb services 
             var mongoClient = new MongoClient(builder.Configuration.GetConnectionString("MongoDb"));
+
             builder.Services.AddSingleton<IMongoDatabase>(mongoClient.GetDatabase("GalleryAppMDB"));
 
          
