@@ -20,6 +20,7 @@ namespace GalleryApp.Controllers
         }
         public IActionResult All()
         {
+
             return View();
         }
 
@@ -54,7 +55,7 @@ namespace GalleryApp.Controllers
                 GalleryId = gallery.Id
             };
 
-            // open strem to add file data in MongoDB 
+            // open stream to add file data in MongoDB 
             using (MemoryStream stream = new MemoryStream()) 
             {
                 await fileData.CopyToAsync(stream);
@@ -72,10 +73,22 @@ namespace GalleryApp.Controllers
             }
 
             await _dbContext.GalleryImages.AddAsync(galleryImages);
-
+            await _dbContext.SaveChangesAsync();
 
 
            return RedirectToAction("Index", "Home");
+        }
+
+        public async Task<IActionResult> GetImage(string fileName) 
+        {
+            var imageFile = await _mongoCollection.Find(x => x.FileName == fileName).FirstOrDefaultAsync();
+
+            if (imageFile == null || imageFile.FileData == null)
+            {
+                return NotFound();
+            }
+
+            return File(imageFile.FileData,$"image/{imageFile.Extension}");
         }
     }
 }

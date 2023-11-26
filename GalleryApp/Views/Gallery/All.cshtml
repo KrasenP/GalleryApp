@@ -1,0 +1,27 @@
+﻿@model List<AllViewModel> 
+
+<div class="col-md-4">
+
+    @foreach(var gallery in Model){
+        <div class="card mb-3">
+            @if ((gallery.GalleryImage != null))
+            {
+                <img class="card-img-top" src="@Url.Action("GetImage", "Gallery", new { fileName = gallery.GalleryImage.FileName })" alt="Gallery Image not found">
+            }
+            <div class="card-body text-center">
+                <h4>gallery.</h4>
+
+
+
+                <br />
+                <a asp-controller="Gallery" asp-action="Details" asp-route-id="@Model.Id"
+               class="btn btn-success">Details</a>
+
+            
+            </div>
+        </div>
+    
+    
+    }
+   
+</div>
