@@ -25,15 +25,17 @@ namespace GalleryApp.Controllers
             {
                 Id = x.Id,
                 Title = x.Title,
-                GalleryImage = x.GalleryImages.Select(y=>new GalleryImages() 
+                GalleryImage = x.GalleryImages.Select(y=>new ImageViewModel() 
                 {
-                    FileName = y.FileName,
-                    GalleryId = y.GalleryId,
-                    Ext = y.Ext
-                })
-                .FirstOrDefault()
+                   FileName = y.FileName,
+                   Extensions = y.Ext
+                }).FirstOrDefault()
+             
             }).ToListAsync();
-            return View();
+
+           
+
+            return View(view);
         }
 
         [HttpGet]
