@@ -3,6 +3,7 @@ using GalleryApp.Model;
 using GalleryApp.Model.MongoDbModel;
 using GalleryApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MongoDB.Driver;
 using System.Security.Cryptography.X509Certificates;
 
@@ -18,9 +19,20 @@ namespace GalleryApp.Controllers
             _dbContext = dbContext;
             _mongoCollection = mongoDatabase.GetCollection<GalleryImagesFiles>("GalleryApp");
         }
-        public IActionResult All()
+        public async Task<IActionResult> All()
         {
-
+            var view = await _dbContext.Galleries.Select(x => new AllViewModel()
+            {
+                Id = x.Id,
+                Title = x.Title,
+                GalleryImage = x.GalleryImages.Select(y=>new GalleryImages() 
+                {
+                    FileName = y.FileName,
+                    GalleryId = y.GalleryId,
+                    Ext = y.Ext
+                })
+                .FirstOrDefault()
+            }).ToListAsync();
             return View();
         }
 
