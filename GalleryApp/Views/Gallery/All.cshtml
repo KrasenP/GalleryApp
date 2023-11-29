@@ -88,6 +88,10 @@
                         <h4>@gallery.Title</h4>
                         <a asp-controller="Gallery" asp-action="Details" asp-route-id="@gallery.Id"
                        class="btn btn-success">Details</a>
+
+                        <a asp-controller="Gallery" asp-action="Edit" asp-route-id="@gallery.Id"
+                       class="btn btn-success">Edit</a>
+
                     </div>
                 </div>
             }

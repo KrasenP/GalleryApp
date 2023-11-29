@@ -1,5 +1,55 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿
 @{
 }
+
+@model EditViewModel
+
+<style>
+
+
+
+    .row {
+        border: 2px solid black;
+        margin-left: 20em;
+        margin-right: 20em;
+        align-items: center;
+        padding-top: 5em;
+        padding-bottom: 5em;
+    }
+
+    .form-container {
+    }
+
+</style>
+
+<div class="row">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <div class="form-container">
+
+            <div class="form-header">
+                <h3>Create a Tour</h3>
+            </div>
+            <form asp-controller="Gallery" asp-action="Edit" asp-route-Id="@Model.Id" method="post" enctype="multipart/form-data" class="p-4">
+                <div class="form-group">
+                    <label asp-for="Title"></label>
+                    <input asp-for="Title" class="form-control" placeholder="Title...">
+                    <span asp-validation-for="Title" class="small text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Description"></label>
+                    <input asp-for="Description" class="form-control"
+                           placeholder="Duaration of the trip">
+                    <span asp-validation-for="Description" class="small text-danger"></span>
+                </div>
+
+                <div class="text-center">
+                    <input class="btn btn-primary mt-3 w-50" type="submit" value="Create Gallery" />
+                </div>
+            </form>
+
+
+
+        </div>
+    </div>
+</div>
