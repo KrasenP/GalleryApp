@@ -1,11 +1,21 @@
 ﻿@model List<AllViewModel> 
 
 <style>
+
+    .section-heder {
+    
+        text-align:center;
+        border-bottom: 1px solid black;
+        margin-bottom: 5em;
+    
+    }
+
     .card-container {
         border: 3px solid red;
         display: flex;
         flex-wrap: wrap; /* Това ще позволи на картичките да преминават на нов ред при нужда */
         padding: 10px; /* Добавя някакво пространство вътре в контейнера */
+        justify-content: center;
     }
 
 
@@ -14,7 +24,7 @@
         margin: 10px; /* Добавя пространство около картичките */
 
        /* flex: 0 0 calc(33.333% - 20px); /* Задава основата на гъвкавата кутия и не позволява картичката да расте или да се свива */ 
-        flex: 0 0 25%;
+        flex: 0 0 20%;
 
         box-shadow: 0 0 45px rgba(0, 0, 0, .08);
     }
@@ -36,6 +46,12 @@
 
 
 </style>
+
+<div class="section-heder">
+ 
+    <h2>All Galleries</h2>
+
+</div>
 
 <div class="card-container">
       
