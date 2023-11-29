@@ -7,7 +7,7 @@
         text-align:center;
         border-bottom: 1px solid black;
         margin-bottom: 5em;
-    
+        padding-bottom: 2em;
     }
 
     .card-container {
@@ -16,12 +16,13 @@
         flex-wrap: wrap; /* Това ще позволи на картичките да преминават на нов ред при нужда */
         padding: 10px; /* Добавя някакво пространство вътре в контейнера */
         justify-content: center;
+        gap:2em;
     }
 
 
     .card {
         border: 2px solid black;
-        margin: 10px; /* Добавя пространство около картичките */
+       /* margin: 10px; /* Добавя пространство около картичките */
 
        /* flex: 0 0 calc(33.333% - 20px); /* Задава основата на гъвкавата кутия и не позволява картичката да расте или да се свива */ 
         flex: 0 0 20%;
@@ -50,6 +51,15 @@
 <div class="section-heder">
  
     <h2>All Galleries</h2>
+
+    <article class="some-h">
+        <p>
+            See our gallery or go and create gallery 
+        </p>
+        <a asp-controller="Gallery" asp-action="Add"
+           class="btn btn-primary">Create</a>
+
+    </article>
 
 </div>
 
