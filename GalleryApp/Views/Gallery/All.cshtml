@@ -6,11 +6,12 @@
     
         text-align:center;
         border-bottom: 1px solid black;
+        margin-top:2em;
         margin-bottom: 5em;
         padding-bottom: 2em;
     }
 
-    .card-container {
+    .cards-container {
         border: 3px solid red;
         display: flex;
         flex-wrap: wrap; /* Това ще позволи на картичките да преминават на нов ред при нужда */
@@ -22,12 +23,15 @@
 
     .card {
         border: 2px solid black;
+        border-radius:1em;
        /* margin: 10px; /* Добавя пространство около картичките */
 
        /* flex: 0 0 calc(33.333% - 20px); /* Задава основата на гъвкавата кутия и не позволява картичката да расте или да се свива */ 
         flex: 0 0 20%;
 
-        box-shadow: 0 0 45px rgba(0, 0, 0, .08);
+        box-shadow: 0 0 45px rgba(0, 0, 0, .2);
+
+      overflow:hidden;
     }
 
         .card img {
@@ -39,11 +43,19 @@
             object-fit: cover; /* Това ще запази аспектното съотношение и ще покрие наличното пространство */
 
             transition: .5s;
+
         }
 
         .card:hover img {
             transform: scale(1.05);
+ 
         }
+
+    .btn{
+    
+        border-radius:0.5em;
+    
+    }
 
 
 </style>
@@ -63,7 +75,7 @@
 
 </div>
 
-<div class="card-container">
+<div class="cards-container">
       
             @foreach (var gallery in Model)
             {
