@@ -2,33 +2,35 @@
 
 <style>
 
-    .section-heder {
-        text-align: center;
-        border-bottom: 1px solid black;
-        margin-top: 2em;
-        margin-bottom: 5em;
-        padding-bottom: 2em;
-    }
+        .section-heder {
+            text-align: center;
+            border-bottom: 1px solid black;
+            margin-top: 2em;
+            margin-bottom: 5em;
+            padding-bottom: 2em;
+        }
 
-    .cards-container {
-        border: 3px solid red;
-        display: flex;
-        flex-wrap: wrap; /* Това ще позволи на картичките да преминават на нов ред при нужда */
-        padding: 10px; /* Добавя някакво пространство вътре в контейнера */
-        justify-content: center;
-        gap: 2em;
-    }
+        .cards-container {
+            border: 3px solid red;
+            display: flex;
+            flex-wrap: wrap; /* Това ще позволи на картичките да преминават на нов ред при нужда */
+          /* padding: 10px; /* Добавя някакво пространство вътре в контейнера */
+            justify-content: left;
+            padding-left:3em;
+        }
 
 
-    .card {
-        border: 2px solid black;
-        border-radius: 1em;
-        /* margin: 10px; /* Добавя пространство около картичките */
-        /* flex: 0 0 calc(33.333% - 20px); /* Задава основата на гъвкавата кутия и не позволява картичката да расте или да се свива */
-        flex: 0 0 20%;
-        box-shadow: 0 0 45px rgba(0, 0, 0, .2);
-        overflow: hidden;
-    }
+        .card {
+            border: 2px solid black;
+            border-radius: 1em;
+            /* margin: 10px; /* Добавя пространство около картичките */
+            /* flex: 0 0 calc(33.333% - 20px); /* Задава основата на гъвкавата кутия и не позволява картичката да расте или да се свива */
+            flex: 0 0 22%;
+            box-shadow: 0 0 45px rgba(0, 0, 0, .2);
+            margin-left:2em;
+            overflow: hidden;
+            
+        }
 
         .card img {
             /* width: 100%; /* Настояваме изображението да запълва картичката */
@@ -45,9 +47,9 @@
             transform: scale(1.05);
         }
 
-    .btn {
-        border-radius: 0.5em;
-    }
+        .btn {
+            border-radius: 0.5em;
+        }
 
 </style>
 
@@ -76,10 +78,17 @@
                 <img class="card-img-top" src="@Url.Action("GetImage", "Gallery", new { fileName = gallery.GalleryImage.FileName })" alt="Gallery Image not found">
             }
             <div class="card-body text-center">
-                <h4>@gallery.Title</h4>
+                <h6>@gallery.Title</h6>
 
-                <p>Category: @gallery.Category<p />
+                @if (gallery.Category==null)
+                {
+                    <p>Category: No category selected</p>
+                }
+                else{
 
+                    <p>Category: @gallery.Category</p>
+                }
+               
                 <a asp-controller="Gallery" asp-action="Details" asp-route-id="@gallery.Id"
                class="btn btn-success">Details</a>
 

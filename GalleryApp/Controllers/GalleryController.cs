@@ -77,12 +77,13 @@ namespace GalleryApp.Controllers
             var ctagories = await _dbContext.Categories.Select(x => new CategoryViewModel()
             {
                 Id = x.Id,
-                Name = x.Name
+                Name = x.Name,                
             }).ToListAsync();
 
             AddViewModel view = new AddViewModel();
-
+        
             view.Categories = ctagories;
+          
 
             return View(view);
         }
@@ -90,11 +91,13 @@ namespace GalleryApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(AddViewModel view,IFormFile fileData) 
         {
+
             // create object for Gallery without Image!!! (for SQL)
             Gallery gallery = new Gallery() 
             {
                    Title = view.Title,
-                   Description = view.Description
+                   Description = view.Description,
+                   CategoriesId = view.CategoryId
             };
 
 

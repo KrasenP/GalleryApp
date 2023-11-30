@@ -6,7 +6,11 @@
 
 <style>
 
-
+    .form-header{
+        text-align:center;
+        border:2px solid red;
+    
+    }
 
     .row {
         border: 2px solid black;
@@ -18,13 +22,24 @@
     }
 
     .form-container {
+
+       padding-top:2em;
     }
 
     .btn{
         
         border-radius:1em;
+        transition: background-color 0.5s,transform 0.5s;      
         
     }
+
+    .btn:hover{
+            background-color: #0056b3; 
+            transform:translateY(-1px);
+    
+    }
+
+
 
 </style>
 
@@ -33,7 +48,7 @@
         <div class="form-container">
 
             <div class="form-header">
-                <h3>Create a Tour</h3>
+                <h3>Edit Gaery</h3>
             </div>
             <form asp-controller="Gallery" asp-action="Edit" asp-route-Id="@Model.Id" method="post" enctype="multipart/form-data" class="p-4">
                 <div class="form-group">
