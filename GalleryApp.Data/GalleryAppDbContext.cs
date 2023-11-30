@@ -15,6 +15,8 @@ namespace GalleryApp.Data
 
         public DbSet<GalleryImages> GalleryImages { get; set; }
 
+        public DbSet<Categories> Categories { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
 

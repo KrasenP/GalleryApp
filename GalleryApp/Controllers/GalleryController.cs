@@ -57,6 +57,7 @@ namespace GalleryApp.Controllers
             {
                 Id = x.Id,
                 Title = x.Title,
+                Category = x.Categories.Name,
                 GalleryImage = x.GalleryImages.Select(y=>new ImageViewModel() 
                 {
                    FileName = y.FileName,
@@ -71,9 +72,19 @@ namespace GalleryApp.Controllers
         }
 
         [HttpGet]
-        public IActionResult Add() 
+        public async Task<IActionResult> Add() 
         {
-            return View();
+            var ctagories = await _dbContext.Categories.Select(x => new CategoryViewModel()
+            {
+                Id = x.Id,
+                Name = x.Name
+            }).ToListAsync();
+
+            AddViewModel view = new AddViewModel();
+
+            view.Categories = ctagories;
+
+            return View(view);
         }
 
         [HttpPost]

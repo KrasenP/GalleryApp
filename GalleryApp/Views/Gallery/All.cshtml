@@ -1,12 +1,11 @@
-﻿@model List<AllViewModel> 
+﻿@model List<AllViewModel>
 
 <style>
 
     .section-heder {
-    
-        text-align:center;
+        text-align: center;
         border-bottom: 1px solid black;
-        margin-top:2em;
+        margin-top: 2em;
         margin-bottom: 5em;
         padding-bottom: 2em;
     }
@@ -17,56 +16,48 @@
         flex-wrap: wrap; /* Това ще позволи на картичките да преминават на нов ред при нужда */
         padding: 10px; /* Добавя някакво пространство вътре в контейнера */
         justify-content: center;
-        gap:2em;
+        gap: 2em;
     }
 
 
     .card {
         border: 2px solid black;
-        border-radius:1em;
-       /* margin: 10px; /* Добавя пространство около картичките */
-
-       /* flex: 0 0 calc(33.333% - 20px); /* Задава основата на гъвкавата кутия и не позволява картичката да расте или да се свива */ 
+        border-radius: 1em;
+        /* margin: 10px; /* Добавя пространство около картичките */
+        /* flex: 0 0 calc(33.333% - 20px); /* Задава основата на гъвкавата кутия и не позволява картичката да расте или да се свива */
         flex: 0 0 20%;
-
         box-shadow: 0 0 45px rgba(0, 0, 0, .2);
-
-      overflow:hidden;
+        overflow: hidden;
     }
 
         .card img {
-           /* width: 100%; /* Настояваме изображението да запълва картичката */
-           /* height: auto; /* Запазваме аспектното съотношение на изображението */
+            /* width: 100%; /* Настояваме изображението да запълва картичката */
+            /* height: auto; /* Запазваме аспектното съотношение на изображението */
 
-            width:100%; /* Изображението ще запълва широчината на картичката */
+            width: 100%; /* Изображението ще запълва широчината на картичката */
             height: 250px; /* Фиксирана височина, променете според вашите нужди */
             object-fit: cover; /* Това ще запази аспектното съотношение и ще покрие наличното пространство */
 
             transition: .5s;
-
         }
 
         .card:hover img {
             transform: scale(1.05);
- 
         }
 
-    .btn{
-    
-        border-radius:0.5em;
-    
+    .btn {
+        border-radius: 0.5em;
     }
-
 
 </style>
 
 <div class="section-heder">
- 
+
     <h2>All Galleries</h2>
 
     <article class="some-h">
         <p>
-            See our gallery or go and create gallery 
+            See our gallery or go and create gallery
         </p>
         <a asp-controller="Gallery" asp-action="Add"
            class="btn btn-primary">Create</a>
@@ -76,24 +67,27 @@
 </div>
 
 <div class="cards-container">
-      
-            @foreach (var gallery in Model)
+
+    @foreach (var gallery in Model)
+    {
+        <div class="card mb-3">
+            @if ((gallery.GalleryImage != null))
             {
-                <div class="card mb-3">
-                    @if ((gallery.GalleryImage != null))
-                    {
-                        <img class="card-img-top" src="@Url.Action("GetImage", "Gallery", new { fileName = gallery.GalleryImage.FileName })" alt="Gallery Image not found">
-                    }
-                    <div class="card-body text-center">
-                        <h4>@gallery.Title</h4>
-                        <a asp-controller="Gallery" asp-action="Details" asp-route-id="@gallery.Id"
-                       class="btn btn-success">Details</a>
-
-                        <a asp-controller="Gallery" asp-action="Edit" asp-route-id="@gallery.Id"
-                       class="btn btn-success">Edit</a>
-
-                    </div>
-                </div>
+                <img class="card-img-top" src="@Url.Action("GetImage", "Gallery", new { fileName = gallery.GalleryImage.FileName })" alt="Gallery Image not found">
             }
+            <div class="card-body text-center">
+                <h4>@gallery.Title</h4>
+
+                <p>Category: @gallery.Category<p />
+
+                <a asp-controller="Gallery" asp-action="Details" asp-route-id="@gallery.Id"
+               class="btn btn-success">Details</a>
+
+                <a asp-controller="Gallery" asp-action="Edit" asp-route-id="@gallery.Id"
+               class="btn btn-success">Edit</a>
+
+            </div>
+        </div>
+    }
 </div>
 

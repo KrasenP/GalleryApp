@@ -1,4 +1,5 @@
 ﻿using Amazon.Util.Internal;
+using GalleryApp.Model;
 using System.ComponentModel.DataAnnotations;
 
 namespace GalleryApp.Models
@@ -10,6 +11,8 @@ namespace GalleryApp.Models
 
         [Required]
         public string Description { get; set; }
-        
+
+        public List<CategoryViewModel> Categories { get; set; }
+
     }
 }

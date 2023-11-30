@@ -22,11 +22,31 @@ namespace GalleryApp.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("GalleryApp.Model.Categories", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+                });
+
             modelBuilder.Entity("GalleryApp.Model.Gallery", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<int?>("CategoriesId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -37,6 +57,8 @@ namespace GalleryApp.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoriesId");
 
                     b.ToTable("Galleries");
                 });
@@ -269,6 +291,15 @@ namespace GalleryApp.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("GalleryApp.Model.Gallery", b =>
+                {
+                    b.HasOne("GalleryApp.Model.Categories", "Categories")
+                        .WithMany("Galleries")
+                        .HasForeignKey("CategoriesId");
+
+                    b.Navigation("Categories");
+                });
+
             modelBuilder.Entity("GalleryApp.Model.GalleryImages", b =>
                 {
                     b.HasOne("GalleryApp.Model.Gallery", "Gallery")
@@ -329,6 +360,11 @@ namespace GalleryApp.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("GalleryApp.Model.Categories", b =>
+                {
+                    b.Navigation("Galleries");
                 });
 
             modelBuilder.Entity("GalleryApp.Model.Gallery", b =>
