@@ -18,6 +18,7 @@ namespace GalleryApp.Model
         public int? CategoriesId { get; set; }
         public Categories? Categories { get; set; }
 
+
         public List<GalleryImages> GalleryImages { get; set; }
 
     }

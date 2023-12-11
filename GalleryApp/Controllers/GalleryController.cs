@@ -20,19 +20,32 @@ namespace GalleryApp.Controllers
             _mongoCollection = mongoDatabase.GetCollection<GalleryImagesFiles>("GalleryApp");
         }
 
+        public async Task<IActionResult> Details(string id) 
+        {
+            var getDetials = await _dbContext.Galleries.Select(x => x.Id).ToListAsync();
+            return View();
+        }
+
         public async Task<IActionResult> Edit(string id) 
         {
+            var categories = await _dbContext.Categories.Select(x=>new CategoryViewModel() 
+            {
+                Id = x.Id,
+                Name = x.Name
+            }).ToListAsync();
+
             var getGalleryForEdit = await _dbContext.Galleries.Where(x => x.Id.ToString() == id).Select(y => new EditViewModel()
             {
                 Id = y.Id,
                 Title = y.Title,
-                Description = y.Description
+                Description = y.Description,
+                Categories = categories
+                
             }).FirstOrDefaultAsync();
 
             return View(getGalleryForEdit);
         }
-
-
+     
         [HttpPost]
         public async Task<IActionResult> Edit(EditViewModel editViewModel)
         {
@@ -45,6 +58,7 @@ namespace GalleryApp.Controllers
 
             gallery.Title = editViewModel.Title;
             gallery.Description = editViewModel.Description;
+            gallery.CategoriesId = editViewModel.CategoryId;
 
             await _dbContext.SaveChangesAsync();
 

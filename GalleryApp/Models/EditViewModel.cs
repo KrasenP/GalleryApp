@@ -11,5 +11,8 @@ namespace GalleryApp.Models
 
         [Required]
         public string Description { get; set; }
+
+        public int CategoryId { get; set; }
+        public  List<CategoryViewModel> Categories { get; set; }
     }
 }
