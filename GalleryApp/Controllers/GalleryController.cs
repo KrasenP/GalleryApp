@@ -23,6 +23,7 @@ namespace GalleryApp.Controllers
         public async Task<IActionResult> Details(string id) 
         {
             var getDetials = await _dbContext.Galleries.Select(x => x.Id).ToListAsync();
+
             return View();
         }
 
