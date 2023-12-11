@@ -136,7 +136,7 @@ namespace GalleryApp.Controllers
             await _dbContext.SaveChangesAsync();
 
 
-           return RedirectToAction("Index", "Home");
+           return RedirectToAction(nameof(All));
         }
 
         public async Task<IActionResult> GetImage(string fileName) 
