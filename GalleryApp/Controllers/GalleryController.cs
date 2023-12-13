@@ -20,11 +20,29 @@ namespace GalleryApp.Controllers
             _mongoCollection = mongoDatabase.GetCollection<GalleryImagesFiles>("GalleryApp");
         }
 
-        public async Task<IActionResult> Details(string id) 
+        public async Task<IActionResult> Details(Guid id) 
         {
-            var getDetials = await _dbContext.Galleries.Select(x => x.Id).ToListAsync();
+            var galleryImages = await _dbContext.GalleryImages.Where(x=>x.GalleryId==id)
+                .Select(y=>new ImageViewModel() 
+                {
+                    FileName = y.FileName,
+                    Extensions = y.Ext
+                })
+                .ToListAsync();
 
-            return View();
+            var getDetials = await _dbContext.Galleries.Where(x=>x.Id==id)
+                .Select(x=>new DetailsViewModel() 
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    Description = x.Description,
+                    Images = galleryImages
+                   
+                })
+                
+                .ToListAsync();
+
+            return View(getDetials);
         }
 
         public async Task<IActionResult> Edit(string id) 
