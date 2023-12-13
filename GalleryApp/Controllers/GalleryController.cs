@@ -22,26 +22,23 @@ namespace GalleryApp.Controllers
 
         public async Task<IActionResult> Details(Guid id) 
         {
-            var galleryImages = await _dbContext.GalleryImages.Where(x=>x.GalleryId==id)
-                .Select(y=>new ImageViewModel() 
-                {
-                    FileName = y.FileName,
-                    Extensions = y.Ext
-                })
-                .ToListAsync();
+            var getGallery = await _dbContext.Galleries.Where(x => x.Id == id)
+                  .Select(y => new DetailsViewModel()
+                  {
+                      
+                      Title=y.Title,
+                      Description=y.Description,
+                      Images=y.GalleryImages.Select(z=>new ImageViewModel() 
+                      {
+                          FileName=z.FileName,
+                          Extensions = z.Ext
+                          
+                      }).ToList()
 
-            var getDetials = await _dbContext.Galleries.Where(x => x.Id == id)
-                .Select(x => new DetailsViewModel()
-                {
-                    Id = x.Id,
-                    Title = x.Title,
-                    Description = x.Description,
-                    Images = galleryImages
-
-                }).FirstOrDefaultAsync();
+                  }).FirstOrDefaultAsync();
                
 
-            return View(getDetials);
+            return View(getGallery);
         }
 
         public async Task<IActionResult> Edit(string id) 
