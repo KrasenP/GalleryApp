@@ -30,17 +30,16 @@ namespace GalleryApp.Controllers
                 })
                 .ToListAsync();
 
-            var getDetials = await _dbContext.Galleries.Where(x=>x.Id==id)
-                .Select(x=>new DetailsViewModel() 
+            var getDetials = await _dbContext.Galleries.Where(x => x.Id == id)
+                .Select(x => new DetailsViewModel()
                 {
                     Id = x.Id,
                     Title = x.Title,
                     Description = x.Description,
                     Images = galleryImages
-                   
-                })
-                
-                .ToListAsync();
+
+                }).FirstOrDefaultAsync();
+               
 
             return View(getDetials);
         }
