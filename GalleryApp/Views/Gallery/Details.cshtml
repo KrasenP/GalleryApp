@@ -20,11 +20,12 @@
             justify-content:stretch;
             display:none;
             border-radius: 3em;
+            border:2px solid black;
         }
 
         .gallery-item img {
   
-            width: 100%;
+            width: 75%;
             /*max-width:100%  only granted pichture will be in continer and not cross conteinr size*/
             height: auto;
             transition: transform 0.5s;
@@ -53,37 +54,38 @@
     <h1>Image Gallery</h1>
 
     <!-- Контейнер за галерията -->
-    <div class="gallery">
-            <!-- Изображенията с URL линкове -->
-            
-                <div class="gallery-item">
+     <div class="gallery">
 
-                    <img src="@Url.Action("GetImage", "Gallery" , new{fileName = Model.Images})" alt="Image 1">
+        <div class="gallery-item">
+            @foreach (var image in Model.Images)
+            {
+                <div class="gallery-img">
+                    <img src="@Url.Action("GetImage", "Gallery", new { fileName = image.FileName })" alt="Image">
                 </div>
-
-             
-            
-        <!-- Бутони за превключване на изображения -->
+            }
             <div class="gallery-controls">
                 <button onclick="plusSlides(-1)">&#10094; Предишно изображение</button>
                 <button onclick="plusSlides(1)">&#10095; Следващо изображение</button>
             </div>
 
-            <div class="info-content-section">
+           
+        </div>
+      
+     </div>
+        
 
-                <section class="info-section">
+    <div class="info-content-section">
 
-                    <p>Title: @Model.Title</p>
+        <section class="info-section">
 
-                    <p>Description:@Model.Description</p>
+            <p>Title: @Model.Title</p>
 
-                    <p>Count of pictures: @Model.Images.Count();</p>
+            <p>Description:@Model.Description</p>
 
-                </section>
-            </div>
+            <p>Count of pictures: @Model.Images.Count();</p>
+
+        </section>
     </div>
-          
-
            
 
     <script>
