@@ -12,14 +12,13 @@
             flex-wrap: nowrap;
             overflow: hidden;
             background-color: #f2f2f2;
-          /*  position: relative; */
         }
 
         .gallery-item {
             flex: 0 0 100%; 
             text-align: center;
             justify-content:stretch;
-            display: none;
+            display:none;
             border-radius: 3em;
         }
 
@@ -38,6 +37,7 @@
             margin-top: 10px;
 
         }
+       
 
         .gallery-controls button {
             background-color: #4CAF50;
@@ -54,47 +54,37 @@
 
     <!-- Контейнер за галерията -->
     <div class="gallery">
-        <!-- Изображенията с URL линкове -->
-        @foreach(var imges in Model.Images)
-        {
-             <div class="gallery-item">
-            <img src="https://expertphotography.b-cdn.net/wp-content/uploads/2022/04/Types-of-Photography-Intro-Andrik-Langfield.jpg" alt="Image 1">
-        </div>
-
-        }
-       
-        @*<div class="gallery-item">
-            <img src="https://expertphotography.b-cdn.net/wp-content/uploads/2022/04/Types-of-Photography-Intro-Andrik-Langfield.jpg" alt="Image 1">
-        </div>
-
-        <div class="gallery-item">
-            <img src="https://i.ytimg.com/vi/ineZXLbL7s8/maxresdefault.jpg" alt="Image 2">
-        </div>
-
-        <div class="gallery-item">
-            <img src="https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2021/11/free-photography-courses-tutorials-featured.jpg" alt="Image 3">
-        </div>
-    </div>*@
-
-    <!-- Бутони за превключване на изображения -->
-    <div class="gallery-controls">
-        <button onclick="plusSlides(-1)">&#10094; Предишно изображение</button>
-        <button onclick="plusSlides(1)">&#10095; Следващо изображение</button>
-    </div>
-
-    <div class="info-content-section">
-
-        <section class="info-section">
+            <!-- Изображенията с URL линкове -->
             
-            <p>Title: @Model.Title</p>
+                <div class="gallery-item">
 
-            <p>Description:@Model.Description</p>
+                    <img src="@Url.Action("GetImage", "Gallery" , new{fileName = Model.Images})" alt="Image 1">
+                </div>
 
-            <p>Count of pictures: @Model.Images.Count();</p>
+             
+            
+        <!-- Бутони за превключване на изображения -->
+            <div class="gallery-controls">
+                <button onclick="plusSlides(-1)">&#10094; Предишно изображение</button>
+                <button onclick="plusSlides(1)">&#10095; Следващо изображение</button>
+            </div>
 
-        </section>
+            <div class="info-content-section">
 
+                <section class="info-section">
+
+                    <p>Title: @Model.Title</p>
+
+                    <p>Description:@Model.Description</p>
+
+                    <p>Count of pictures: @Model.Images.Count();</p>
+
+                </section>
+            </div>
     </div>
+          
+
+           
 
     <script>
         // JavaScript код за управление на изображенията
