@@ -25,7 +25,7 @@
 
         .gallery-item img {
   
-            width: 75%;
+            width: 90%;
             /*max-width:100%  only granted pichture will be in continer and not cross conteinr size*/
             height: auto;
             transition: transform 0.5s;
@@ -48,6 +48,24 @@
             margin: 0 5px;
             cursor: pointer;
         }
+
+        .info-content-section{
+            
+            display:flex;
+            text-align:center;
+            margin-top:1em;
+            gap:4em;
+        
+        }
+
+        .author-section a{
+            background-color: #4CAF50;
+            color: aliceblue;
+            
+            padding: 5px 10px;
+        }
+
+
     </style>
 </head>
 <body>
@@ -79,11 +97,13 @@
         <section class="info-section">
 
             <p>Title: @Model.Title</p>
-
             <p>Description:@Model.Description</p>
-
             <p>Count of pictures: @Model.Images.Count();</p>
 
+        </section>
+        <section class="author-section">
+            <p>Aouthor info</p>
+            <a asp-action="All" asp-controller="Gallery"> #10095; Click </a>
         </section>
     </div>
            
