@@ -1,115 +1,134 @@
-﻿@model DetailsViewModel
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Gallery</title>
     <style>
-        /* Стилове за галерията */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
         .gallery {
             display: flex;
-            flex-wrap: nowrap;
-            overflow: hidden;
-            background-color: #f2f2f2;
+            justify-content: center;
+            align-items: center;
+            flex-wrap:wrap;
+            flex-direction:column;
+            background-color: #fff;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         }
 
         .gallery-item {
-            flex: 0 0 100%; 
-            text-align: center;
-            justify-content:stretch;
-            display:none;
-            border-radius: 3em;
-            border:2px solid black;
+            display:flex;
+            flex: 0 0 100%;     
+            display: none;
         }
 
-        .gallery-item img {
-  
-            width: 90%;
-            /*max-width:100%  only granted pichture will be in continer and not cross conteinr size*/
-            height: auto;
-            transition: transform 0.5s;
-        }
+            .gallery-item img {
+                width: 90%; /* Adjust this to control the width of the image */
+                height: auto; /* 'auto' will maintain the aspect ratio */
+                max-height: 90vh; /* Adjust this to control the maximum height */
+                object-fit: contain; /* This will make sure the image is contained within the dimensions and not cropped */
+                border-radius: 10px;
+                transition: transform 0.5s;
+            }
 
-        /* Стилове за бутоните */
         .gallery-controls {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             margin-top: 10px;
 
         }
-       
 
-        .gallery-controls button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            margin: 0 5px;
-            cursor: pointer;
+            .gallery-controls button {
+                background-color: #66B2FF;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                margin: 0 10px;
+                cursor: pointer;
+                border-radius: 5px;
+                transition: background-color 0.3s;
+            }
+
+                .gallery-controls button:hover {
+                    background-color: #3399FF;
+                }
+
+        .info-content-section {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 5em;
+            background-color: #99CCFF;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .info-content-section{
-            
-            display:flex;
-            text-align:center;
-            margin-top:1em;
-            gap:4em;
-        
+        .info-section, .author-section {
+            text-align: center;
         }
 
-        .author-section a{
-            background-color: #4CAF50;
-            color: aliceblue;
-            
-            padding: 5px 10px;
-        }
+            .author-section a {
+                background-color: #66B2FF;
+                color: white;
+                padding: 5px 15px;
+                text-decoration: none;
+                border-radius: 5px;
+                transition: background-color 0.3s;
+            }
 
+                .author-section a:hover {
+                    background-color: #3399FF;
+                }
 
     </style>
 </head>
 <body>
     <h1>Image Gallery</h1>
 
-    <!-- Контейнер за галерията -->
-     <div class="gallery">
-
-        <div class="gallery-item">
-            @foreach (var image in Model.Images)
-            {
-                <div class="gallery-img">
-                    <img src="@Url.Action("GetImage", "Gallery", new { fileName = image.FileName })" alt="Image">
-                </div>
-            }
-            <div class="gallery-controls">
-                <button onclick="plusSlides(-1)">&#10094; Предишно изображение</button>
-                <button onclick="plusSlides(1)">&#10095; Следващо изображение</button>
+    <!-- Gallery Container -->
+    <div class="gallery">
+        @foreach (var image in Model.Images)
+        {
+            <div class="gallery-item">
+                <img src="@Url.Action("GetImage", "Gallery", new { fileName = image.FileName })" alt="Gallery Image">
             </div>
+        }
 
-           
+        <!-- Gallery Controls -->
+        <div class="gallery-controls">
+            <button onclick="plusSlides(-1)">&#10094; Previous</button>
+            <button onclick="plusSlides(1)">&#10095; Next</button>
         </div>
-      
-     </div>
-        
+    </div>
 
+    <!-- Info Content Section -->
     <div class="info-content-section">
-
         <section class="info-section">
-
             <p>Title: @Model.Title</p>
-            <p>Description:@Model.Description</p>
-            <p>Count of pictures: @Model.Images.Count();</p>
-
+            <p>Description: @Model.Description</p>
+            <p>Count of pictures: @Model.Images.Count</p>
         </section>
         <section class="author-section">
-            <p>Aouthor info</p>
-            <a asp-action="All" asp-controller="Gallery"> #10095; Click </a>
+            <p>Author Info</p>
+            <a asp-action="All" asp-controller="Gallery">More Galleries</a>
         </section>
     </div>
-           
 
+    <!-- JavaScript for Gallery -->
     <script>
-        // JavaScript код за управление на изображенията
         let slideIndex = 1;
         showSlides(slideIndex);
 
@@ -119,11 +138,9 @@
 
         function showSlides(n) {
             const galleryItems = document.querySelectorAll('.gallery-item');
-            if (n > galleryItems.length) { slideIndex = 1 }
-            if (n < 1) { slideIndex = galleryItems.length }
-
+            if (n > galleryItems.length) slideIndex = 1;
+            if (n < 1) slideIndex = galleryItems.length;
             galleryItems.forEach(item => item.style.display = 'none');
-
             galleryItems[slideIndex - 1].style.display = 'block';
         }
     </script>
