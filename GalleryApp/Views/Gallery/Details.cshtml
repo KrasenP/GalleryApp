@@ -30,7 +30,7 @@
         }
 
         .gallery-item {
-            flex: 0 0 75%;
+            flex: 0 0 80%;
             text-align: center;
             justify-content: stretch;
             display: none;
@@ -41,6 +41,8 @@
                 width: 80%;
                 height: auto;
                 transition: transform 0.5s;
+                border-radius:0.2em;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             }
 
         .gallery-controls {
@@ -107,12 +109,14 @@
 
         <div class="camera-style">
             <p>Description: @Model.Description</p>
+
+            <!-- Gallery Controls -->
+            <div class="gallery-controls">
+                <button onclick="plusSlides(-1)">&#10094; Previous</button>
+                <button onclick="plusSlides(1)">&#10095; Next</button>
+            </div>
         </div>
-        <!-- Gallery Controls -->
-        <div class="gallery-controls">
-            <button onclick="plusSlides(-1)">&#10094; Previous</button>
-            <button onclick="plusSlides(1)">&#10095; Next</button>
-        </div>
+       
       
     </div>
    
@@ -125,7 +129,7 @@
             <p>Count of pictures: @Model.Images.Count</p>
         </section>
         <section class="author-section">
-            <p>Author Info</p>
+            <p>ChEck my galleries</p>
             <a asp-action="All" asp-controller="Gallery">More Galleries</a>
         </section>
     </div>
