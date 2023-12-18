@@ -20,8 +20,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-wrap:wrap;
-            flex-direction:column;
+            flex-wrap: wrap;
+            flex-direction: row;
             background-color: #fff;
             margin: 20px auto;
             padding: 20px;
@@ -30,25 +30,23 @@
         }
 
         .gallery-item {
-            display:flex;
-            flex: 0 0 100%;     
+            flex: 0 0 75%;
+            text-align: center;
+            justify-content: stretch;
             display: none;
+            border-radius: 3em;
         }
 
             .gallery-item img {
-                width: 100%; /* Adjust this to control the width of the image */
-                height: auto; /* 'auto' will maintain the aspect ratio */
-                max-height: 100vh; /* Adjust this to control the maximum height */
-                object-fit: contain; /* This will make sure the image is contained within the dimensions and not cropped */
-                border-radius: 10px;
+                width: 80%;
+                height: auto;
                 transition: transform 0.5s;
             }
 
         .gallery-controls {
             display: flex;
             justify-content: space-between;
-            margin-top: 10px;
-
+            margin-top: 5px;
         }
 
             .gallery-controls button {
@@ -107,12 +105,17 @@
             </div>
         }
 
+        <div class="camera-style">
+            <p>Description: @Model.Description</p>
+        </div>
         <!-- Gallery Controls -->
         <div class="gallery-controls">
             <button onclick="plusSlides(-1)">&#10094; Previous</button>
             <button onclick="plusSlides(1)">&#10095; Next</button>
         </div>
+      
     </div>
+   
 
     <!-- Info Content Section -->
     <div class="info-content-section">
