@@ -20,6 +20,20 @@ namespace GalleryApp.Controllers
             _mongoCollection = mongoDatabase.GetCollection<GalleryImagesFiles>("GalleryApp");
         }
 
+        [HttpPost]
+        public async Task<IActionResult> DeletePicture(string fileName,string id) 
+        {
+
+            var galleryPicture = await _dbContext.GalleryImages.Where(x => x.FileName == fileName).FirstOrDefaultAsync();
+
+
+             _dbContext.GalleryImages.Remove(galleryPicture);
+
+            await _dbContext.SaveChangesAsync();
+
+            return RedirectToAction(nameof(All));
+        }
+
         public async Task<IActionResult> Details(Guid id) 
         {
             var getGallery = await _dbContext.Galleries.Where(x => x.Id == id)
@@ -179,5 +193,7 @@ namespace GalleryApp.Controllers
 
             return File(imageFile.FileData,$"image/{imageFile.Extension}");
         }
+
+        
     }
 }
