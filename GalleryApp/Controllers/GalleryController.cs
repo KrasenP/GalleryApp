@@ -21,17 +21,21 @@ namespace GalleryApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> DeletePicture(string fileName,string id) 
+        public async Task<IActionResult> DelatePicture(string fileName,string Id) 
         {
 
             var galleryPicture = await _dbContext.GalleryImages.Where(x => x.FileName == fileName).FirstOrDefaultAsync();
 
+            if (galleryPicture == null) 
+            {
+                return Content("fail");
+            }
 
              _dbContext.GalleryImages.Remove(galleryPicture);
 
             await _dbContext.SaveChangesAsync();
 
-            return RedirectToAction(nameof(All));
+            return Content("success");
         }
 
         public async Task<IActionResult> Details(Guid id) 
