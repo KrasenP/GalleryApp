@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GalleryApp.Data
 {
-    public class GalleryAppDbContext : IdentityDbContext
+    public class GalleryAppDbContext : IdentityDbContext<UserApp>
     {
         public GalleryAppDbContext(DbContextOptions<GalleryAppDbContext> options):base(options)    
         {
@@ -16,6 +16,8 @@ namespace GalleryApp.Data
         public DbSet<GalleryImages> GalleryImages { get; set; }
 
         public DbSet<Categories> Categories { get; set; }
+
+        public DbSet<UserApp> UsersApp { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
