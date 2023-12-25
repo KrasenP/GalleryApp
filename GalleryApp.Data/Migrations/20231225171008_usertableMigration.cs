@@ -4,46 +4,44 @@
 
 namespace GalleryApp.Data.Migrations
 {
-    public partial class addAppUser : Migration
+    public partial class usertableMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
                 name: "AppUserId",
                 table: "Galleries",
-                type: "nvarchar(450)",
-                nullable: false,
-                defaultValue: "");
-
-            migrationBuilder.AddColumn<string>(
-                name: "Name",
-                table: "AspNetUsers",
                 type: "nvarchar(max)",
                 nullable: false,
                 defaultValue: "");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Galleries_AppUserId",
+            migrationBuilder.AddColumn<string>(
+                name: "UserAppId",
                 table: "Galleries",
-                column: "AppUserId");
+                type: "nvarchar(450)",
+                nullable: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Galleries_UserAppId",
+                table: "Galleries",
+                column: "UserAppId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Galleries_AspNetUsers_AppUserId",
+                name: "FK_Galleries_AspNetUsers_UserAppId",
                 table: "Galleries",
-                column: "AppUserId",
+                column: "UserAppId",
                 principalTable: "AspNetUsers",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                principalColumn: "Id");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Galleries_AspNetUsers_AppUserId",
+                name: "FK_Galleries_AspNetUsers_UserAppId",
                 table: "Galleries");
 
             migrationBuilder.DropIndex(
-                name: "IX_Galleries_AppUserId",
+                name: "IX_Galleries_UserAppId",
                 table: "Galleries");
 
             migrationBuilder.DropColumn(
@@ -51,8 +49,8 @@ namespace GalleryApp.Data.Migrations
                 table: "Galleries");
 
             migrationBuilder.DropColumn(
-                name: "Name",
-                table: "AspNetUsers");
+                name: "UserAppId",
+                table: "Galleries");
         }
     }
 }

@@ -12,10 +12,11 @@ namespace GalleryApp.Model
 {
     public class UserApp:IdentityUser
     {
-        [Key]
-        public string UserAppId { get; set; }
-        public string Name { get; set; }
+        public UserApp()
+        {
+            Galleries = new List<Gallery>();
+        }
 
-       public List<Gallery> Galleries { get; set; }
+        public List<Gallery> Galleries { get; set; }
     }
 }

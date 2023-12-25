@@ -19,7 +19,7 @@ namespace GalleryApp.Model
         public Categories? Categories { get; set; }
 
 
-        [ForeignKey(nameof(UserApp))]
+        [ForeignKey(nameof(AppUserId))]
         public string AppUserId { get; set; }
 
         public UserApp UserApp  { get; set; }

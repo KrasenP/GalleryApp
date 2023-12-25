@@ -36,7 +36,7 @@ namespace GalleryApp.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("GalleryApp.Model.Gallery", b =>
@@ -47,7 +47,7 @@ namespace GalleryApp.Data.Migrations
 
                     b.Property<string>("AppUserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("CategoriesId")
                         .HasColumnType("int");
@@ -60,13 +60,16 @@ namespace GalleryApp.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.Property<string>("UserAppId")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.HasIndex("AppUserId");
+                    b.HasKey("Id");
 
                     b.HasIndex("CategoriesId");
 
-                    b.ToTable("Galleries", (string)null);
+                    b.HasIndex("UserAppId");
+
+                    b.ToTable("Galleries");
                 });
 
             modelBuilder.Entity("GalleryApp.Model.GalleryImages", b =>
@@ -92,7 +95,7 @@ namespace GalleryApp.Data.Migrations
 
                     b.HasIndex("GalleryId");
 
-                    b.ToTable("GalleryImages", (string)null);
+                    b.ToTable("GalleryImages");
                 });
 
             modelBuilder.Entity("GalleryApp.Model.UserApp", b =>
@@ -119,10 +122,6 @@ namespace GalleryApp.Data.Migrations
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -303,15 +302,13 @@ namespace GalleryApp.Data.Migrations
 
             modelBuilder.Entity("GalleryApp.Model.Gallery", b =>
                 {
-                    b.HasOne("GalleryApp.Model.UserApp", "UserApp")
-                        .WithMany("Galleries")
-                        .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("GalleryApp.Model.Categories", "Categories")
                         .WithMany("Galleries")
                         .HasForeignKey("CategoriesId");
+
+                    b.HasOne("GalleryApp.Model.UserApp", "UserApp")
+                        .WithMany("Galleries")
+                        .HasForeignKey("UserAppId");
 
                     b.Navigation("Categories");
 
