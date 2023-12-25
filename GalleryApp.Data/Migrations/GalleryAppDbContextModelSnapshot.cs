@@ -36,7 +36,7 @@ namespace GalleryApp.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("GalleryApp.Model.Gallery", b =>
@@ -66,7 +66,7 @@ namespace GalleryApp.Data.Migrations
 
                     b.HasIndex("CategoriesId");
 
-                    b.ToTable("Galleries");
+                    b.ToTable("Galleries", (string)null);
                 });
 
             modelBuilder.Entity("GalleryApp.Model.GalleryImages", b =>
@@ -92,7 +92,7 @@ namespace GalleryApp.Data.Migrations
 
                     b.HasIndex("GalleryId");
 
-                    b.ToTable("GalleryImages");
+                    b.ToTable("GalleryImages", (string)null);
                 });
 
             modelBuilder.Entity("GalleryApp.Model.UserApp", b =>
