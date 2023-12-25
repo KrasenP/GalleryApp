@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using MessagePack;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace GalleryApp.Model
 {
     public class UserApp:IdentityUser
     {
-        public Guid Id { get; set; }
+
 
         public string Name { get; set; }
 
