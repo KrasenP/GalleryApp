@@ -10,6 +10,7 @@ for details on configuring this project to bundle and minify static web assets. 
 
 }
 
+
 a.navbar-brand {
     white-space: normal;
     text-align: center;
@@ -26,45 +27,59 @@ a {
   border-color: #1861ac;
 }
 
+
+
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
 
+
+
 .border-top {
   border-top: 1px solid #e5e5e5;
 }
+
+
 .border-bottom {
   /* border-bottom: 1px solid #e5e5e5;*/
   border-bottom: 4px solid #0077cc;
 }
 
+
+
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
+
+
 
 button.accept-policy {
   font-size: 1rem;
   line-height: inherit;
 }
+
+
 /* I make this changes default container lenght, margin  */
 .container {
     border: 2px solid #0077cc;
     display:flex;
     max-width:100%;
     margin:auto;
-    justify-content:center;
-    
 
+    
 }
 /*I make this changes default element in container */
 .pb-3 {
-    
-    border:2px solid yellow;
+    border: 2px solid yellow;
     flex: 0 0 100%;
+    
     margin:auto;
 }
+
+
+
 .footer {
   position: absolute;
   bottom: 0;
