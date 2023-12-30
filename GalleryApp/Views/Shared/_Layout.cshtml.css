@@ -7,7 +7,7 @@ for details on configuring this project to bundle and minify static web assets. 
     padding-left:5em;
     padding-right:5em;
     padding-top:1em;
-
+    
 }
 
 
@@ -62,19 +62,20 @@ button.accept-policy {
 
 
 /* I make this changes default container lenght, margin  */
-.container {
+/*.container {
     border: 2px solid #0077cc;
     display:flex;
     max-width:100%;
+    background-color:cornflowerblue;
     margin:auto;
 
     
-}
+} */
 /*I make this changes default element in container */
 .pb-3 {
     border: 2px solid yellow;
     flex: 0 0 100%;
-    
+    background-color:aqua;
     margin:auto;
 }
 
