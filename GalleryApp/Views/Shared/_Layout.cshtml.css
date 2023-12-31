@@ -7,7 +7,7 @@ for details on configuring this project to bundle and minify static web assets. 
     padding-left:5em;
     padding-right:5em;
     padding-top:1em;
-    
+
 }
 
 
@@ -75,8 +75,8 @@ button.accept-policy {
 .pb-3 {
     border: 2px solid yellow;
     flex: 0 0 100%;
-    background-color:aqua;
-    margin:auto;
+    background-image:url(/wwwroot/Img/17362.jpg);
+    margin: auto;
 }
 
 
@@ -87,4 +87,5 @@ button.accept-policy {
   width: 100%;
   white-space: nowrap;
   line-height: 60px;
+  background-color:white;
 }
