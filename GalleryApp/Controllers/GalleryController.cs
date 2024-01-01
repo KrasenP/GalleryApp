@@ -138,13 +138,14 @@ namespace GalleryApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(AddViewModel view,IFormFile fileData) 
         {
-
+            
             // create object for Gallery without Image!!! (for SQL)
             Gallery gallery = new Gallery() 
             {
                    Title = view.Title,
                    Description = view.Description,
                    CategoriesId = view.CategoryId
+                  
             };
 
 

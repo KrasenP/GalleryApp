@@ -23,7 +23,8 @@ body {
     font-family: 'Arial', sans-serif;
     line-height: 1.4;
     margin-left: 0;
-    background-color:#3399ff;
+    transition: background-color 0.7s,transform 0.7s;
+    background-color: #fcab08;
 }
 
 

@@ -2,11 +2,13 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 .navbar {
-    
-    border : solid 2px pink;
-    padding-left:5em;
-    padding-right:5em;
-    padding-top:1em;
+    border: solid 2px pink;
+    padding-left: 5em;
+    padding-right: 5em;
+    padding-top: 1em;
+    background-color: #fcab08;
+    transition: background-color 0.6s,transform 0.6s;
+
 
 }
 
@@ -74,8 +76,7 @@ button.accept-policy {
 /*I make this changes default element in container */
 .pb-3 {
     border: 2px solid yellow;
-    flex: 0 0 100%;
-    background-image:url(/wwwroot/Img/17362.jpg);
+    flex: 0 0 100%;  
     margin: auto;
 }
 
