@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GalleryApp.Data\GalleryApp.Data.csproj" />
+    <ProjectReference Include="..\GalleryApp.Extensions\GalleryApp.Extensions.csproj" />
   </ItemGroup>
 
 </Project>

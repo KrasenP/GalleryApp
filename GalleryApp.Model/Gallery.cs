@@ -20,9 +20,9 @@ namespace GalleryApp.Model
 
 
         [ForeignKey(nameof(AppUserId))]
-        public string AppUserId { get; set; }
+        public string? AppUserId { get; set; }
 
-        public UserApp UserApp  { get; set; }
+        public UserApp? UserApp  { get; set; }
         public List<GalleryImages> GalleryImages { get; set; }
 
 

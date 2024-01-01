@@ -5,7 +5,7 @@ using GalleryApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MongoDB.Driver;
-using System.Security.Cryptography.X509Certificates;
+using static GalleryApp.Extensions.ClaimsExt; 
 
 namespace GalleryApp.Controllers
 {
@@ -138,13 +138,14 @@ namespace GalleryApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(AddViewModel view,IFormFile fileData) 
         {
-            
+            var getUserId = this.User.GetCurrentUser();
             // create object for Gallery without Image!!! (for SQL)
-            Gallery gallery = new Gallery() 
+            Gallery gallery = new Gallery()
             {
-                   Title = view.Title,
-                   Description = view.Description,
-                   CategoriesId = view.CategoryId
+                Title = view.Title,
+                Description = view.Description,
+                CategoriesId = view.CategoryId,
+                AppUserId = getUserId
                   
             };
 
