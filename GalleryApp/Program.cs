@@ -1,4 +1,5 @@
 using GalleryApp.Data;
+using GalleryApp.Model;
 using GalleryApp.Model.MongoDbModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -18,7 +19,7 @@ namespace GalleryApp
                 options.UseSqlServer(connectionString));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+            builder.Services.AddDefaultIdentity<UserApp>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<GalleryAppDbContext>();
             builder.Services.AddControllersWithViews();
 

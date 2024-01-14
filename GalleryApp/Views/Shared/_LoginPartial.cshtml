@@ -1,6 +1,7 @@
-﻿@using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+﻿@using GalleryApp.Model
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<UserApp> SignInManager
+@inject UserManager<UserApp> UserManager
 
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
@@ -17,10 +18,10 @@
 else
 {
     <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+            <a class="nav-link text-dark" asp-area="" asp-controller="UserApp" asp-action="Register">Register</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            <a class="nav-link text-dark" asp-area="" asp-controller="UserApp" asp-action="Login"></a>
     </li>
 }
 </ul>

@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading;
 using System.Threading.Tasks;
+using GalleryApp.Model;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -23,16 +24,16 @@ namespace GalleryApp.Areas.Identity.Pages.Account
 {
     public class RegisterModel : PageModel
     {
-        private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly IUserStore<IdentityUser> _userStore;
+        private readonly SignInManager<UserApp> _signInManager;
+        private readonly UserManager<UserApp> _userManager;
+        private readonly IUserStore<UserApp> _userStore;
         private readonly ILogger<RegisterModel> _logger;
 
 
         public RegisterModel(
-            UserManager<IdentityUser> userManager,
-            IUserStore<IdentityUser> userStore,
-            SignInManager<IdentityUser> signInManager,
+            UserManager<UserApp> userManager,
+            IUserStore<UserApp> userStore,
+            SignInManager<UserApp> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
@@ -108,54 +109,54 @@ namespace GalleryApp.Areas.Identity.Pages.Account
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl ??= Url.Content("~/");
-            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            // ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = CreateUser();
+                //var user = CreateUser();
 
-                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
+                //await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
 
-                var result = await _userManager.CreateAsync(user, Input.Password);
+                //var result = await _userManager.CreateAsync(user, Input.Password);
 
-                if (result.Succeeded)
-                {
-                    _logger.LogInformation("User created a new account with password.");
+                //if (result.Succeeded)
+                //{
+                //    _logger.LogInformation("User created a new account with password.");
 
-                    var userId = await _userManager.GetUserIdAsync(user);
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                    var callbackUrl = Url.Page(
-                        "/Account/ConfirmEmail",
-                        pageHandler: null,
-                        values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
-                        protocol: Request.Scheme);
+                //    var userId = await _userManager.GetUserIdAsync(user);
+                //    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                //    code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+                //    var callbackUrl = Url.Page(
+                //        "/Account/ConfirmEmail",
+                //        pageHandler: null,
+                //        values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
+                //        protocol: Request.Scheme);
 
 
-                    if (_userManager.Options.SignIn.RequireConfirmedAccount)
-                    {
-                        return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
-                    }
-                    else
-                    {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        return LocalRedirect(returnUrl);
-                    }
-                }
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
-                }
+                //    if (_userManager.Options.SignIn.RequireConfirmedAccount)
+                //    {
+                //        return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
+                //    }
+                //    else
+                //    {
+                //        await _signInManager.SignInAsync(user, isPersistent: false);
+                //        return LocalRedirect(returnUrl);
+                //    }
+                //}
+                //foreach (var error in result.Errors)
+                //{
+                //    ModelState.AddModelError(string.Empty, error.Description);
+                //}
             }
 
             // If we got this far, something failed, redisplay form
             return Page();
         }
 
-        private IdentityUser CreateUser()
+        private UserApp CreateUser()
         {
             try
             {
-                return Activator.CreateInstance<IdentityUser>();
+                return Activator.CreateInstance<UserApp>();
             }
             catch
             {
