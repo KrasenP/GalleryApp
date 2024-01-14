@@ -26,7 +26,9 @@ namespace GalleryApp.Models
         [Required]
         [Display(Name ="User name")]
        
-        public string UserName { get; set; }
+        public string UserN { get; set; }
+
+        public string Status { get; set; }
 
     }
 }

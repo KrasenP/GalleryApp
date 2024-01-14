@@ -19,6 +19,11 @@ namespace GalleryApp.Model
 
         public List<Gallery> Galleries { get; set; }
 
+
+        public override string UserName { get => base.UserName; set => base.UserName = value; }
+
+        public string Status { get; set; }
+
         public double PhotographerRentPricePerDay { get; set; }
     }
 }
