@@ -40,7 +40,7 @@ namespace GalleryApp.Controllers
 
            IdentityResult result = await this._userManager.CreateAsync(newUser,registerForm.Password);
 
-            if (result.Succeeded)
+            if (!result.Succeeded)
             {
                 foreach (IdentityError item in result.Errors)
                 {
@@ -55,6 +55,25 @@ namespace GalleryApp.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [HttpGet]
+        public IActionResult Login() 
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> Login(LoginFormModel loginForm) 
+        {
+            UserApp userApp = await _userManager.FindByNameAsync(loginForm.UserName);
+            if (userApp == null) 
+            {
+                return View(loginForm);
+            }
+
+            await _signInManager.SignInAsync(userApp, false, null);
+
+       
+            return RedirectToAction("All", "Gallery");
+        }
         public IActionResult AddToAlbum()
         {
             return View();
