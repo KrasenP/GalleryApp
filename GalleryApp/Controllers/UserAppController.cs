@@ -52,7 +52,7 @@ namespace GalleryApp.Controllers
             }
          
             await _signInManager.SignInAsync(newUser, false);
-            return RedirectToAction("Ïndex", "Home");
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult AddToAlbum()
